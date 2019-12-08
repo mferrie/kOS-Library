@@ -1,4 +1,5 @@
 // Rover autopilot library
+runpath("0:/library/sphere_nav.ks").
 
 function cruiseControl {
   parameter spd.
