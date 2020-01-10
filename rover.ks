@@ -16,16 +16,13 @@ function steerTo {
 }
 
 function driveTo {
-  parameter hdg, dist, spd. // Go x meters in the direction of y compass degrees.
+  parameter point.
 
-  set currentDistance to dist.
-  until currentDistance < 10 {
-    // Drive in the required direction for 10 meters
-    // Measure the new distance between here and the target
-    // If the distance is less than 10 meters, stop.
-    // Else, go to the beginning of the loop.
+  until sphere_dist(ship:geoposition, point) < 50 {
+    // Point in the direction of the point
+    lock wheelsteering to steerTo(point:heading).
+
+    // Control the throttle to maintain a speed of 15 m/s
+    lock wheelthrottle to cruiseControl(15).
   }
-  unlock wheelThrottle.
-  unlock wheelSteer.
-  brakes on.
 }
