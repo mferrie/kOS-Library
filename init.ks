@@ -1,13 +1,5 @@
-// Initialize the vehicle's "operating system" core functionality
-
-function notify {
-  parameter message, priority is "message".
-  if priority = "message" set col to green.
-  else if priority = "alert" set col to yellow.
-  else if priority = "warning" set col to red.
-  else {
-    set priority to "message".
-    set col to green.
+if ship:status = "PRELAUNCH" {
+  if exists("0:/mission/" + ship:name + ".ks"){
+    runpath("0:/mission/" + ship:name + ".ks").
   }
-  hudtext(message, 5, 2, 50, col, false).
 }
